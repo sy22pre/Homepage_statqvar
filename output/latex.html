@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaTex - 川口研ホームページ</title>
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">川口研ホームページ</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <head>
+    <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <title>LaTex</title>
+</head>
+
+<body>
+    <h1>LaTexについて</h1>
+    <p>
+        Latexとは，いわゆるコンピュータ文書作成ソフトです．
+        簡単にいうと，wordの代わりに使う文章を書くソフトです．
+        読み方としては「ラテフ」と基本的は呼びます．
+        Laの部分を抜いて，単に「テフ」と読んだりします．
+    </P>
+    <p>
+        皆さんは，Latexを使ったことはあるでしょうか？
+        学部生の内にLaTexを使っている人は一人か二人ぐらいしかいないのではないかと思います．
+        多くの人は授業などのレポートにwordを使い作成したのではないでしょうか？
+    </p>
+    <p>
+        wordはwordで使いやすいソフトです．
+        しかしwordは図の挿入や表の作成，数式の作成にはあまり向いていません．(wordガチ勢の方すみません)
+        また，数式番号，図や表の番号・題の挿入にもあまり向いていません．
+    </p>
+    <p>
+        そこで，LaTexの導入です．
+        Latexを用いることで，下のような複雑な数式を簡単・きれいに書くことができます．
+    </p>
+    \[
+        \boldsymbol{A} = 
+        \begin{bmatrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{23} & a_{33} 
+        \end{bmatrix}
+    \]
+    \[
+    \displaystyle
+      \begin{split}
+        \sum_{i=1}^{\infty} \frac{1}{n^{2}} &= \lim_{n\to{\infty}} (\frac{1}{1^{2}}+ \frac{1}{2^{2}}+\cdots+\frac{1}{n^{2}}) \\
+                    &= \frac{\pi^{2}}{6}
+        \end{split}
+    \]
+    <p>
+        また，式番号の参照も簡単に行うことができます．
+        数式を書くときに，式名を追加することで簡単に式番を参照できるようになります．
+        こうすることで，後から数式を増やしたり減らしたりした場合でも式番号をいちいち変えなくても自動で変更してくれます．
+        (詳しいやり方は先輩に聞いてね)
+    </p>
+    <p>
+        ただし，Latexはwordに比べるとプログラミング要素が強いため(このおかげで自分の考えている文字の大きさや数式にできる)入力した文字や画像などを見ながら微調整することはできません．
+        また，記述に誤りなどがある場合コンパイル(自分が書いたプログラミングをコンピュータが理解できる言葉に変換すること)がうまくできずエラーが発生します．
+        これが難しさや面倒に感じることがあるとは思います．
+        しかし，やり方がわかり出すとめちゃめちゃ便利なので頑張ってください!
+    </p>
+    <p>
+        ここまで，LaTexを説明をしてきました．
+        最初の説明はこの辺にして早速導入していきましょう!
+    </p>
+    <h1>LaTexのインストール</h1>
+    <p>
+        ここでは，インストールの手順について説明していきます．
+        インストールはブラウザ上で行います．
+        ブラウザ(chromeやMicroEdge等)で<a href="https://www.tug.org/texlive/acquire-netinstall.html">こちら</a>を検索してください．
+        そこで，install-tl-windows.exeをクリックしてください．
+        すると，下のような画面が出てきます．
+    </P>
+    <img src="https://tb17kin.github.io/Homepage_statqvar/wwwroot/fig/installer.png" width="600"height="400">
+    <p>
+        Installをクリックし，右下のNextを押してください．
+        次の画面に移ったら，そのまま右下のInstallをおしてください．
+    </p>
+    <p>
+        その後，出てきた画面の左下の高度な設定をクリックしてください．
+        すると，下のような画面になると思います．
+    </p>
+    <img src="https://tb17kin.github.io/Homepage_statqvar/wwwroot/fig/TexConfiguration.png" width="600"height="400">
+    <p>
+        「選択したもの」の「追加コレクション」のカスタマイズで言語選択で日本語と英語の以外のチェックを外しても大丈夫です．
+        他のコレクションのチェックは付けたままで右下の「ok」を押してください．
+        これで，インストールが開始されます．
+        インストールは30分～2時間ぐらいかかると思います．
+        これでとりあえずインストールに関しては終わりです．
+    </p>
+    <h1>LaTexの環境構築</h1>
+    <p>
+        インストールが完了したら，下の画面の検索欄で「TeXworks editor」と打ち込んでTeXを起動させてください．
+        ツールバーにある編集をクリックし，一番下にある「設定」を押してください．
+        そこからは<a href="https://texwiki.texjp.org/?TeXworks\%2F\%E8\%A8\%AD\%E5\%AE\%9A">こちら</a>で検索してください．
+        このURLの先のサイトを見ながら設定をしていってください．
+    </p>
+    <img src="https://tb17kin.github.io/Homepage_statqvar/wwwroot/fig/TaskInterFace.jpg" width="600"height="400">
+    <p>
+        次に，先輩から「.latexmkrc」のファイルをSlackからもらうか共有ファイルからコピーしてください．
+        (たぶん.latexmkrcのままSlackで送れないと思うのでもらった後各自でプロパティで.を付けて拡張子にしてください)
+        この「.latexmkrc」を自分のPCのローカルディスクC:\Users\{自分のアカウント名}のところにこのファイルを置いてください．
+        これを行うことで，LaTexでPDFを見れるようになります．
+    </p>
+    <p>
+        前部でインストールしたVScodeを起動してください．
+        拡張機能で「LaTex Workshop」と入力し，一番上に出てくる「LaTeX Workshop」をインストールしてください．
+    </p>
+    <img src="https://tb17kin.github.io/Homepage_statqvar/wwwroot/fig/VSLaTex.png" width="600"height="400">
+    <p>
+        そして，左下の歯車をクリックし設定をクリックしてください．
+        検索欄で「setting.json」と入れてください．
+        検索結果にある「setting.jsonで編集」をクリックしてください．
+        このsetting.jsonを編集することでVSCode内でコンパイルしたLaTexのPDFを見ることができるようになります．
+        コードは次のようにしてください．
+        <pre>
+            <code>
+                {
+                    // ---------- Language ----------
+
+                    "[tex]": {
+                        // スニペット補完中にも補完を使えるようにする
+                        "editor.suggest.snippetsPreventQuickSuggestions": false,
+                        // インデント幅を2にする
+                        "editor.tabSize": 2
+                    },
+
+                    "[latex]": {
+                        // スニペット補完中にも補完を使えるようにする
+                        "editor.suggest.snippetsPreventQuickSuggestions": false,
+                        // インデント幅を2にする
+                        "editor.tabSize": 2
+                    },
+
+                    "[bibtex]": {
+                        // インデント幅を2にする
+                        "editor.tabSize": 2
+                    },
+
+
+                    // ---------- LaTeX Workshop ----------
+
+                    // 使用パッケージのコマンドや環境の補完を有効にする
+                    "latex-workshop.intellisense.package.enabled": true,
+
+                    // 生成ファイルを削除するときに対象とするファイル
+                    // デフォルト値に "*.synctex.gz" を追加
+                    "latex-workshop.latex.clean.fileTypes": [
+                        "*.aux",
+                        "*.bbl",
+                        "*.blg",
+                        "*.idx",
+                        "*.ind",
+                        "*.lof",
+                        "*.lot",
+                        "*.out",
+                        "*.toc",
+                        "*.acn",
+                        "*.acr",
+                        "*.alg",
+                        "*.glg",
+                        "*.glo",
+                        "*.gls",
+                        "*.ist",
+                        "*.fls",
+                        "*.log",
+                        "*.fdb_latexmk",
+                        "*.snm",
+                        "*.nav",
+                        "*.dvi",
+                        "*.synctex.gz"
+                    ],
+
+                    // 生成ファイルを "out" ディレクトリに吐き出す
+                    "latex-workshop.latex.outDir": "out",
+
+                    // ビルドのレシピ
+                    "latex-workshop.latex.recipes": [
+                        {
+                            "name": "latexmk",
+                            "tools": [
+                                "latexmk"
+                            ]
+                        },
+                    ],
+
+                    // ビルドのレシピに使われるパーツ
+                    "latex-workshop.latex.tools": [
+                        {
+                            "name": "latexmk",
+                            "command": "latexmk",
+                            "args": [
+                                "-silent",
+                                "-outdir=%OUTDIR%",
+                                "%DOC%"
+                            ],
+                        },
+                    ],
+                    "latex-workshop.view.pdf.viewer": "tab",
+                }
+            </code>
+        </pre>
+        この設定がうまく行かない場合は先輩に言ってください．
+    </p>
+    <h1>フォーマットの配布についてと書き方</h1>
+    <p>
+        前述したようにLaTexはプログラミング要素が強いため書式設定などもプログラムしないといけません．
+        これを一人でできるのは猛者だけなので，だいたいの場合は先輩などからもらうようにしています．
+        なので皆さんも報告書などのフォーマットは先輩からもらってください．
+        一応フォーマットに書いているものは自分用にいじってもらってかまいません．
+        (ただ，めっちゃ大変だと思います)
+    </p>
+    <p>
+        LaTexの主な使い方と報告書の書き方についても，先輩からフォーマットをもらうときに教えてもらってください．
+        主な書き方を教えてもらった後は，自分で調べながら書いていってください．
+        (自分で調べた方が早く書くのが上達すると思いますので頑張ってください)
+    </p>
+    <p>
+        追記 : 最新のLaTeX事情は複雑なようでplatexなどが使えなくなる可能性などがあるかも知れないので，できればこのサイトのLaTeX欄の更新をしてほしいと思います．
+        あと，めっちゃ大変と書きましたが川口研で卒論や概要のフォーマットも作ってほしいです．
+    </p>
+</body>
+        </main>
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.bundle.min.js"></script>
+    <script src="./site.js"></script>
+    
+</body>
+</html>
+<style>
+iframe[src$=".pdf"]{
+    width:100%;
+    height:80vh;
+}
+</style>
