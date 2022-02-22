@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj": {}
+    "c:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj": {
+    "c:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj",
+        "projectUniqueName": "c:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj",
         "projectName": "Homepage_statqvar",
-        "projectPath": "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj",
+        "projectPath": "c:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj",
         "packagesPath": "C:\\Users\\naoya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\obj\\",
+        "outputPath": "c:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\naoya\\AppData\\Roaming\\NuGet\\NuGet.Config"
