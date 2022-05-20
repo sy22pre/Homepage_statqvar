@@ -208,8 +208,66 @@
     </p>
     <p>
         LaTexの主な使い方と報告書の書き方についても，先輩からフォーマットをもらうときに教えてもらってください．
-        主な書き方を教えてもらった後は，自分で調べながら書いていってください．
-        (自分で調べた方が早く書くのが上達すると思いますので頑張ってください)
+        一応，基本的な書き方については書いておきます．
+        論文では，コンマ「，」とピリオド「．」は全角で書きます．
+        ですので「、」や「。」は不可です．
+        半角で「,」や「.」も不可です．
+        一文は短く書き，コンマを多用しないようにしてください．
+        図のフォントはできるだけ揃えるようにしてください．
+        「絶対」など強い言葉では書かない．
+    </p>
+    <h1>LinaxでのLaTexを書くことのススメ</h1>
+    <p>
+        ここでは，Linax環境でのLaTexの書き方について説明して行きたいと思います．
+        Windows系でLaTexをコンパイルするより，数倍速くできるためおすすめです．
+        また，コンパイルで吐き出されるファイルについても指定できるためとても便利です．
+    </p>
+    <p>
+        まず，WindowsにLinax環境を入れます．
+        現在，WindowsにはLinaxをインストールするための環境があるので簡単にできると思います．
+        <ol>
+            <li>管理者権限の「cmd」を起動させる</li>
+            <li>「cmd」に「wsl --install」と打つ</li>
+            <li>インストール後UNIXユーザー名とパスワードを聞かれるので設定してください</li>
+            このとき，パスワードはこちらからは見えないようになっているのでパスワードは間違えないようにしてください．
+            <li>この後，「sudo apt update」と打ちアップデートしてください</li>
+            <li>そして，「sudo apt upgrade」と打ちアップグレードしてください</li>
+        </ol>
+        これで，windowsのサブシステムとしてLinuxがインストールされました．
+        この次に，Linux用のLaTexをインストールしていきましょう．
+        <ol>
+            <li>「cmd」などで「wsl」と打ちLinuxを起動させてください</li>
+            <li>「sudo apt install texlive-fonts-extra texlive-fonts-recommended texlive-lang-cjk xdvik-ja」と打ち込んでください</li>
+        </ol>
+        これで，makeというものをインストールしていきましょう．
+        このmakeはwslでLaTexを動かすためのアプリです．
+        <ol>
+            <li>sudo apt install make</li>
+        </ol>
+        このコマンドでインストールしてください．
+        作業ディレクトリに次のコードを書き，Makefileを作ってください．
+        拡張子は「.mak」となり，「Makefile.mak」のファイルを作ってください．
+        <code>
+            .PHONY: clean
+
+            LATEX := uplatex -halt-on-error -interaction=nonstopmode
+
+            main.pdf: main.tex
+                $(LATEX) main.tex
+                $(LATEX) main.tex
+                $(LATEX) main.tex
+                dvipdfmx main.dvi
+
+            clean:
+                -del main.aux
+                -del main.bbl
+                -del main.blg
+                -del main.dvi
+                -del main.log
+                -del main.pdf
+                -del main.toc
+        </code>
+        wslで「make」と打ち込んでいくと実行されると思います．
     </p>
     <p>
         追記 : 最新のLaTeX事情は複雑なようでplatexなどが使えなくなる可能性などがあるかも知れないので，できればこのサイトのLaTeX欄の更新をしてほしいと思います．
