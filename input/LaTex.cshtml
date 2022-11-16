@@ -88,8 +88,9 @@
     <p>
         インストールが完了したら，下の画面の検索欄で「TeXworks editor」と打ち込んでTeXを起動させてください．
         ツールバーにある編集をクリックし，一番下にある「設定」を押してください．
-        そこからは<a href="https://texwiki.texjp.org/?TeXworks\%2F\%E8\%A8\%AD\%E5\%AE\%9A">こちら</a>で検索してください．
+        そこからは<a href="https://texwiki.texjp.org/?TeXworks%2F%E8%A8%AD%E5%AE%9A">こちら</a>で検索してください．
         このURLの先のサイトを見ながら設定をしていってください．
+        検索後，URLの「￥2F」以下の「￥」は消していってもらえるとサイトが見れます．
     </p>
     <img src="https://tb17kin.github.io/Homepage_statqvar/wwwroot/fig/TaskInterFace.jpg" width="600"height="400">
     <p>
@@ -99,6 +100,29 @@
         これを行うことで，LaTexでPDFを見れるようになります．
     </p>
     <p>
+        LaTexのコンパイルのやり方は主に3つあります．
+        一つ目は，LaTexのエディターをそのまま使い実行することでコンパイルする方法です．
+        二つ目は，これから説明するVScodeを使いコンパイルする方法です．
+        三つ目は，最後に説明するLinuxOSを使ってmakeファイルでコンパイルする方法です．
+    </p>
+    <p>
+        一つ目の方法のメリットは，面倒くさい設定をしていかなくても済むことです．
+        ここまでの作業が終わるとそのままコンパイルができるようになります．
+    </p>
+    <p>
+        二つ目の方法のメリットは，一つのエディター完結するところです．
+        違うコードを書きたいときなどのファイルの移動が簡単であり，保存をしたタイミングでコンパイルしてくれます．
+    </p>
+    <p>
+        三つ目の方法のメリットは，コンパイルの速度が速いところです．
+        またこの方法だとコード自体はVScodeなどで書けます．
+    </p>
+    <p>
+        一つ目の方法のやり方は説明不要だと思うので省略します．
+    </p>
+    <h1>LaTexの環境構築 VScode Var.</h1>
+    <p>
+        まず，二つ目の方法について説明していきます．
         前部でインストールしたVScodeを起動してください．
         拡張機能で「LaTex Workshop」と入力し，一番上に出てくる「LaTeX Workshop」をインストールしてください．
     </p>
@@ -197,6 +221,100 @@
             </code>
         </pre>
         この設定がうまく行かない場合は先輩に言ってください．
+        この方法だとVScode上でコンパイルまでできるようにあります．
+    </p>
+    <h1>LaTexの環境構築 Linux Var.</h1>
+    <p>
+        ここでは，Linux環境でのLaTexの書き方について説明して行きたいと思います．
+        Windows系でLaTexをコンパイルするより，数倍速くできるためおすすめです．
+        また，コンパイルで吐き出されるファイルについても指定できるためとても便利です．
+    </p>
+    <p>
+        Windowsには仮想的にLinux環境にすることができる「Windows Subsystem for Linux」通称「wsl」があります．
+        これを用いることで簡単にLinux環境を構築することができます．
+    </p>
+    <p>
+        まず，WindowsにLinux環境を入れます．
+        現在，WindowsにはLinuxをインストールするための環境があるので簡単にできると思います．
+        <ol>
+            <li>管理者権限の「cmd」または「PowerShell」を起動させる</li>
+            <li>「cmd」に「wsl --install」と打つ</li>
+            <li>インストール後UNIXユーザー名とパスワードを聞かれるので設定してください</li>
+            このとき，パスワードはこちらからは見えないようになっているのでパスワードは間違えないようにしてください．
+            <li>この後，「sudo apt update」と打ちアップデートしてください</li>
+            <li>そして，「sudo apt upgrade」と打ちアップグレードしてください</li>
+        </ol>
+        これで，windowsのサブシステムとしてLinuxがインストールされました．
+        インストールされたLinuxはUbuntuと呼ばれているものがインストールされます．
+    </p>
+    <p>
+        Ubuntuを開くときは「Windows Terminal」というアプリを用いると便利です．
+        これはMicrosoft Storeでインストールできるのでインストールしてみてください．
+        このアプリと使うと，「cmd」「Ubuntu」「powerShell」を一つのアプリで同時に使うことができるようになります．
+        詳しい説明は調べてもらえるといろいろ出てきますので調べてみてください．
+    </p>
+    <p>
+        この次に，Linux用のLaTexをインストールしていきましょう．
+        <ol>
+            <li>「cmd」などで「wsl」と打ちLinuxを起動させてください</li>
+            <li>「sudo apt install texlive-fonts-extra texlive-fonts-recommended texlive-lang-cjk xdvik-ja」と打ち込んでください</li>
+        </ol>
+        これで，makeというものをインストールしていきましょう．
+        このmakeはwslでLaTexを動かすためのアプリです．
+        <ol>
+            <li>sudo apt install make</li>
+        </ol>
+        このコマンドでインストールしてください．
+
+        texのインストールが終わると，次はMakefileを作成します．
+        拡張子なしで次のコードを書いてください．
+        <pre>
+            <code>
+                .PHONY: clean
+
+                LATEX := platex -halt-on-error -interaction=nonstopmode
+
+                main.pdf: main.tex
+                    $(LATEX) main.tex
+                    $(LATEX) main.tex
+                    $(LATEX) main.tex
+                    dvipdfmx main.dvi
+
+                clean:
+                    $(RM) main.aux
+                    # $(RM) main.bbl
+                    # $(RM) main.blg
+                    $(RM) main.dvi
+                    $(RM) main.log
+                    # $(RM) main.pdf
+                    $(RM) main.toc
+            </code>
+        </pre>
+        
+        このファイルを自分の書いているTexファイルと同じ階層に置くことでmakeのコードを書くことができます．
+        ちなみにTexのファイル名は「main」としてください．
+
+        以上の作業を終えると，Ubuntuのコマンドでコンパイルができるようになります．
+        使うコードはたぶん以下の二つだと思います．
+        <pre>
+            <code>
+                make
+            </code>
+        </pre>
+
+        このコードでコンパイルをします．
+        <pre>
+            <code>
+                make clean
+            </code>
+        </pre>
+        こちらのコードでフォルダ内の要らないファイルを削除します．
+    </p>
+    <p>
+        以上でコンパイルの方法の説明を終わりたいと思います．
+        自分の好きな方法を選んでコンパイルしてみてください．
+        ちなみに筆者はwslでのコンパイルを行っています．
+        速度が圧倒的に速いので重宝しています．
     </p>
     <h1>フォーマットの配布についてと書き方</h1>
     <p>
@@ -215,59 +333,6 @@
         一文は短く書き，コンマを多用しないようにしてください．
         図のフォントはできるだけ揃えるようにしてください．
         「絶対」など強い言葉では書かない．
-    </p>
-    <h1>LinaxでのLaTexを書くことのススメ</h1>
-    <p>
-        ここでは，Linax環境でのLaTexの書き方について説明して行きたいと思います．
-        Windows系でLaTexをコンパイルするより，数倍速くできるためおすすめです．
-        また，コンパイルで吐き出されるファイルについても指定できるためとても便利です．
-    </p>
-    <p>
-        まず，WindowsにLinax環境を入れます．
-        現在，WindowsにはLinaxをインストールするための環境があるので簡単にできると思います．
-        <ol>
-            <li>管理者権限の「cmd」を起動させる</li>
-            <li>「cmd」に「wsl --install」と打つ</li>
-            <li>インストール後UNIXユーザー名とパスワードを聞かれるので設定してください</li>
-            このとき，パスワードはこちらからは見えないようになっているのでパスワードは間違えないようにしてください．
-            <li>この後，「sudo apt update」と打ちアップデートしてください</li>
-            <li>そして，「sudo apt upgrade」と打ちアップグレードしてください</li>
-        </ol>
-        これで，windowsのサブシステムとしてLinuxがインストールされました．
-        この次に，Linux用のLaTexをインストールしていきましょう．
-        <ol>
-            <li>「cmd」などで「wsl」と打ちLinuxを起動させてください</li>
-            <li>「sudo apt install texlive-fonts-extra texlive-fonts-recommended texlive-lang-cjk xdvik-ja」と打ち込んでください</li>
-        </ol>
-        これで，makeというものをインストールしていきましょう．
-        このmakeはwslでLaTexを動かすためのアプリです．
-        <ol>
-            <li>sudo apt install make</li>
-        </ol>
-        このコマンドでインストールしてください．
-        作業ディレクトリに次のコードを書き，Makefileを作ってください．
-        拡張子は「.mak」となり，「Makefile.mak」のファイルを作ってください．
-        <code>
-            .PHONY: clean
-
-            LATEX := uplatex -halt-on-error -interaction=nonstopmode
-
-            main.pdf: main.tex
-                $(LATEX) main.tex
-                $(LATEX) main.tex
-                $(LATEX) main.tex
-                dvipdfmx main.dvi
-
-            clean:
-                -del main.aux
-                -del main.bbl
-                -del main.blg
-                -del main.dvi
-                -del main.log
-                -del main.pdf
-                -del main.toc
-        </code>
-        wslで「make」と打ち込んでいくと実行されると思います．
     </p>
     <p>
         追記 : 最新のLaTeX事情は複雑なようでplatexなどが使えなくなる可能性などがあるかも知れないので，できればこのサイトのLaTeX欄の更新をしてほしいと思います．
