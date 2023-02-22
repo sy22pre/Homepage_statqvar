@@ -11936,11 +11936,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj",
+      "projectUniqueName": "C:\\Users\\naoya\\Documents\\Homepage_statqvar\\Homepage_statqvar.csproj",
       "projectName": "Homepage_statqvar",
-      "projectPath": "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\Homepage_statqvar.csproj",
+      "projectPath": "C:\\Users\\naoya\\Documents\\Homepage_statqvar\\Homepage_statqvar.csproj",
       "packagesPath": "C:\\Users\\naoya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\naoya\\Documents\\川口研webサイト\\Homepage_statqvar\\obj\\",
+      "outputPath": "C:\\Users\\naoya\\Documents\\Homepage_statqvar\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\naoya\\AppData\\Roaming\\NuGet\\NuGet.Config"
